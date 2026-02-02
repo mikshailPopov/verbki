@@ -1,0 +1,78 @@
+<MainScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "Verbki"
+            font_size: "70dp"
+            size_hint: None, .2
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            halign: "center"
+            valign: "middle"
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: "21dp"
+            Label:
+                text: " "
+                size_hint: .05, 1
+            Button:
+                text: "New Deck"
+                size_hint: .27, .12
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                on_press: root.switch_to_new_deck()
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '5dp'
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint: 1, None
+                    height: "23dp"
+                    Label:
+                        size_hint: .8, 1
+                        color: 0,0,0,1
+                        text: 'Decks'
+                        halign: 'left'
+                        valign: 'middle'
+                        padding: '27dp', '0dp'
+                        text_size: self.size
+                        canvas.before:
+                            Color:
+                                rgba: 1,1,1,1
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+                ScrollView:
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    do_scroll_x: False
+                    do_scroll_y: True
+                    StackLayout:
+                        id: dict_stack
+                        on_kv_post: root.load_dict_db(self)
+                        size_hint: 1, None
+                        padding: ("10dp", "10dp", "10dp", "10dp")
+                        height: self.minimum_height
+                        spacing: "5dp"
+                        width: root.width
+
+            Label:
+                text: " "
+                size_hint: .05, 1
+
+        Label:
+            text: " "
+            font_size: "70dp"
+            size_hint: None, .1
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            halign: "center"
+            valign: "middle"
+    FloatLayout:
+        Button:
+            size_hint: .1, .1
+            text: "\uF0CC"
+            font_name: "fonts/WEBDINGS.ttf"
+            pos_hint: {"x": .05, "y": .07}
+            on_release: root.add_existing_deck()

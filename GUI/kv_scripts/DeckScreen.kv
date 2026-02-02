@@ -1,0 +1,77 @@
+<DeckScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "21dp"
+        Label:
+            text: root.deck_name
+            font_size: "57dp"
+            size_hint: 1, .2
+            halign: "center"
+            valign: "top"
+        ScrollView:
+            size_hint: .83, 1
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            do_scroll_x: False
+            do_scroll_y: True
+            StackLayout:
+                id: verb_list_stack
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: "5dp"
+        Label:
+            text: " "
+            size_hint: 1, None
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: "30dp", "20dp"
+        spacing: "15dp"
+        Button:
+            text: "Back"
+            size_hint: 1, None
+            height: "45dp"
+            width: "100dp"
+            pos: "50dp", "45dp"
+            on_press:
+                root.on_exit()
+
+#        Label:
+#            text: " "
+#            size_hint: 1, None
+        Button:
+            text: "New Card"
+            size_hint: 1, None
+            height: "45dp"
+            width: "100dp"
+            pos: "250dp", "45dp"
+            on_press:
+                root.on_new_card_screen_press()
+
+#        Label:
+#            text: " "
+#            size_hint: 1, None
+        Button:
+            text: '\uF022'
+            font_name: "fonts/WINGDNG2.ttf"
+            size_hint: 1, None
+            height: "45dp"
+            width: "45dp"
+            pos: "400dp", "45dp"
+            on_press:
+                root.on_edit_deck_screen_press()
+
+        Button:
+            text: '\uF0A8'
+            font_name: "fonts/Webdings-Regular.ttf"
+            size_hint: 1, None
+            height: "45dp"
+            width: "45dp"
+            pos: "455dp", "45dp"
+            on_press:
+                root.on_exercise_screen_press()
+

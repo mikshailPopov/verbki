@@ -1,0 +1,28 @@
+{
+    "spanish": {
+        "Indicativo Presente": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Indicativo Pretérito Perfecto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Indicativo Pretérito Indefinido": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Indicativo Pretérito Imperfecto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Indicativo Pretérito Pluscuamperfecto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Indicativo Preterito Anterior": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Indicativo Futuro Imperfecto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Indicativo Futuro Perfecto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Indicativo Condicional Simple": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Indicativo Condicional Compuesto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"]
+    },
+    "english": {
+        "Present Simple": ["I", "You", "He/she/it", "We", "You(plural)", "They"],
+        "Present Continuous": ["I", "You", "He/she/it", "We", "You(plural)", "They"],
+        "Past Simple": ["I", "You", "He/she/it", "We", "You(plural)", "They"],
+        "Past Continuous": ["I", "You", "He/she/it", "We", "You(plural)", "They"],
+        "Present Perfect Simple": ["I", "You", "He/she/it", "We", "You(plural)", "They"],
+        "Present Perfect Continuous": ["I", "You", "He/she/it", "We", "You(plural)", "They"],
+        "Past Perfect Simple": ["I", "You", "He/she/it", "We", "You(plural)", "They"],
+        "Past Perfect Continuous": ["I", "You", "He/she/it", "We", "You(plural)", "They"],
+        "Future Simple": ["I", "You", "He/she/it", "We", "You(plural)", "They"],
+        "Future Continuous": ["I", "You", "He/she/it", "We", "You(plural)", "They"],
+        "Future Perfect Simple": ["I", "You", "He/she/it", "We", "You(plural)", "They"],
+        "Future Perfect Continuous": ["I", "You", "He/she/it", "We", "You(plural)", "They"]
+    }
+}

@@ -1,0 +1,74 @@
+<ExerciseScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        size_hint: .8, 1
+        pos_hint: {"center_x": 0.5}
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: "90dp"
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: None
+
+                Label:
+                    id: correct_counter_label
+                    text: "Correct: 0"
+                    font_size: "18dp"
+                    color: 0, 1, 0, 1
+                Label:
+                    id: incorrect_counter_label
+                    text: "Incorrect: 0"
+                    font_size: "18dp"
+                    color: 1, 0, 0, 1
+            Label:
+                id: verb_title
+                text: "Card Title"
+                font_size: "30dp"
+        ScrollView:
+            size_hint: 1, 1
+            do_scroll_x: False
+            do_scroll_y: True
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            StackLayout:
+                id: tense_stack_layout
+                size_hint_y: None
+                orientation: "lr-tb"
+                height: self.minimum_height
+                spacing: "5dp"
+                width: root.width
+
+        Label:
+            size_hint_y: None
+            height: "20dp"
+            text:""
+
+        BoxLayout:
+            size_hint_y: None
+            orientation: "horizontal"
+            height: "60dp"
+            spacing: "5dp"
+            padding: "30dp", "20dp"
+            width: root.width
+            Button:
+                text: "Back"
+                size_hint: None, None
+                height: "45dp"
+                width: "100dp"
+                pos: "50dp", "45dp"
+                on_press: root.on_exit(self)
+            Label:
+                text: " "
+            Button:
+                text: "Next"
+                size_hint: None, None
+                height: "45dp"
+                width: "100dp"
+                pos: "50dp", "45dp"
+                on_press: root.next_verb()

@@ -1,0 +1,80 @@
+<EditDeckScreen>:
+    language_dropdown: language_dropdown.__self__
+    on_pre_enter:
+        language_dropdown.dismiss()
+    BoxLayout:
+        orientation: "vertical"
+        spacing: "10dp"
+        size_hint: .5, 1
+        #size: "350dp", "500dp"
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        Label:
+            text: "Settings"
+            size_hint: 1, .25
+            font_size: "35dp"
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .1
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            Label:
+                size_hint: 1, 1
+                width: "150dp"
+                text: "Name of the deck "
+                font_size: "15dp"
+
+            TextInput:
+                id: deck_name_input
+                size_hint: 1, 1
+                width: "250dp"
+                height: "30dp"
+                pos_hint: {"center_y": 0.5}
+                hint_text: "Type here..."
+                multiline: False
+                font_size: "15dp"
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, .1
+            #height: "40dp"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            Label:
+                size_hint: 1, 1
+                #width: "150dp"
+                text: "Language "
+                font_size: "15dp"
+
+            Button:
+                id: current_deck_language_button
+                text: "language"
+                size_hint: 1, 1
+                #width: "160dp"
+                #height: "27dp"
+                on_release: language_dropdown.open(self)
+            DropDown:
+                id: language_dropdown
+                size_hint: 1, 1
+                #width: "160dp"
+                #height: "27dp"
+        Label:
+            size_hint: 1, 1
+            text: " "
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            height: "110dp"
+            padding: "25dp", "25dp"
+            spacing: "10dp"
+            Button:
+                text: "Back"
+                size_hint: None, 1
+                width: "100dp"
+                on_press: root.on_exit()
+            Button:
+                text: "Save"
+                size_hint: None, 1
+                width: "100dp"
+                on_press: root.save_new_data()
+            Button:
+                text: "Delete"
+                size_hint: None, 1
+                width: "100dp"
+                on_press: root.delete_deck()

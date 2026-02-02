@@ -1,0 +1,63 @@
+<NewDeckCreatorScreen>:
+    language_dropdown: language_dropdown.__self__
+    on_pre_enter:
+        root.load_langauge_options()
+        language_dropdown.dismiss()
+    AnchorLayout:
+        id: deck_creator_l
+        anchor_x: 'center'
+        anchor_y: 'top'
+        padding: "50dp", "50dp"
+        BoxLayout:
+            id: deck_layout
+            spacing: "10dp"
+            orientation: 'vertical'
+            size_hint: None, .5
+            width: "300dp"
+            Label:
+                text:"New Deck"
+                font_size: "40dp"
+            Label:
+                text:" "
+                font_size: "10dp"
+            TextInput:
+                id: new_deck_name_input
+                text: "New Verb Deck"
+                size_hint: 1, None
+                height: "30dp"
+                pos_hint: {"center_x": 0.5, "center_y": 1}
+                multiline: False
+
+
+            Button:
+                id: main_button
+                text: "Select a tense"
+                size_hint_y: None
+                height: "50dp"
+                on_release: language_dropdown.open(self)
+
+            DropDown:
+                id: language_dropdown
+                on_select:
+                    main_button.text = args[1]
+                    root.on_tense_select(args[1])
+            Label:
+                text: ""
+                size_hint_y: None
+                height: "30dp"
+            Button:
+                text: "Create New Deck"
+                size_hint: .7, None
+                height: "50dp"
+                pos_hint: {"center_x": 0.5, "center_y": 1}
+                on_press: root.on_create_new_deck(new_deck_name_input)
+        FloatLayout
+            Button:
+                text: "Back"
+                size_hint: None, None
+                height: "45dp"
+                width: "100dp"
+                pos: "50dp", "45dp"
+                on_press:
+                    root.on_exit()
+

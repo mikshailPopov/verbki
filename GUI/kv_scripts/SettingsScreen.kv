@@ -1,0 +1,63 @@
+<SettingsScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: .6, 1
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        Label:
+            text: "Setting"
+            font_size: "40dp"
+            size_hint: 1, .3
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1, 1
+            spacing: "5dp"
+            Label:
+                size_hint: 1, None
+                height: "23dp"
+                color: 0,0,0,1
+                text: 'Paths'
+                halign: 'left'
+                valign: 'middle'
+                padding: '27dp', '0dp'
+                text_size: self.size
+                canvas.before:
+                    Color:
+                        rgba: 1,1,1,1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+            ScrollView:
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                do_scroll_x: False
+                do_scroll_y: True
+                StackLayout:
+                    id: path_stack_layout
+                    size_hint: 1, None
+                    padding: "10dp", "15dp"
+                    height: self.minimum_height
+                    spacing: "5dp"
+                    width: root.width
+        Label:
+            text: ""
+            size_hint: 1, .2
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, None
+            padding: 0, "40dp"
+            spacing: "15dp"
+            Button:
+                text: "Back"
+                size_hint: .1, None
+                height: "40dp"
+                on_release: root.on_exit()
+            Button:
+                text: "Add new path"
+                size_hint: .1, None
+                height: "40dp"
+                on_release: root.on_add_new_path()
