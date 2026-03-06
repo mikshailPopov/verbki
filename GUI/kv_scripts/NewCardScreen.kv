@@ -24,24 +24,24 @@
                 Rectangle:
                     pos: self.pos
                     size: self.size
-            BoxLayout:
-                orientation: "horizontal"
-                size_hint: 1, None
-                height: "30dp"
-                pos_hint: {"center_y": 0.5}
-                Label:
-                    size_hint: 1, 1
-                    text: "Original"
-                    color: 0,0,0,1
-                    font_size: "13dp"
-                TextInput:
-                    size_hint: 1, 1
-                    id: original_textinput
-                    hint_text: "Type here..."
-                    write_tab: False
-                    multiline: False
-                    font_size: "14dp"
-                    width: "154dp"
+#            BoxLayout:
+#                orientation: "horizontal"
+#                size_hint: 1, None
+#                height: "30dp"
+#                pos_hint: {"center_y": 0.5}
+#                Label:
+#                    size_hint: 1, 1
+#                    text: "Original"
+#                    color: 0,0,0,1
+#                    font_size: "13dp"
+#                TextInput:
+#                    size_hint: 1, 1
+#                    id: original_textinput
+#                    hint_text: "Type here..."
+#                    write_tab: False
+#                    multiline: False
+#                    font_size: "14dp"
+#                    width: "154dp"
 
             BoxLayout:
                 orientation: "horizontal"
@@ -93,7 +93,7 @@
                 height: "45dp"
                 width: "100dp"
                 pos: "50dp", "45dp"
-                on_press: root.on_exit()
+                on_press: root.on_exit_pressed()
             Button:
                 text: "Create"
                 size_hint: None, None

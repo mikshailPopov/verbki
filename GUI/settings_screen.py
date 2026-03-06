@@ -79,7 +79,7 @@ class SettingsScreen(Screen):
         remove_deck_path(path)
         self.load_paths()
 
-    def on_exit(self):
+    def on_exit_pressed(self):
         self.screen_manager.transition = SlideTransition(direction='up')
         self.screen_manager.switch_to(self.screen_manager.screens_dict['main_screen'])
 

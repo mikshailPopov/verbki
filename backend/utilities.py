@@ -1,5 +1,6 @@
 import json
 import os
+from os.path import isdir, join
 
 
 def get_all_languages_with_tenses(path:str) -> dict:
@@ -21,7 +22,6 @@ def add_new_deck_path(new_path):
     with open('backend/configs/paths.json', 'w', encoding='utf-8') as f:
         json.dump(data, f)
 
-
 def remove_deck_path(path):
     with open(os.path.join(os.getcwd(),'backend/configs/paths.json'), 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -33,3 +33,6 @@ def remove_deck_path(path):
 
     with open(os.path.join(os.getcwd(),'backend/configs/paths.json'), 'w', encoding='utf-8') as f:
         json.dump(data, f)
+
+def is_dir(directory, filename):
+    return isdir(join(directory, filename))

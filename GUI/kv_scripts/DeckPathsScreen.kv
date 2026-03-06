@@ -1,0 +1,51 @@
+<DeckPathsScreen>:
+    on_pre_enter: root.load_deck_paths()
+    BoxLayout:
+        orientation: "vertical"
+
+        Label:
+            size_hint: 1, .2
+            #height: "60dp"
+            font_size: "70dp"
+            text: "Paths"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            halign: "center"
+            valign: "middle"
+
+        BoxLayout:
+            orientation: "vertical"
+            ScrollView:
+                size_hint: .75, 1
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                do_scroll_x: False
+                do_scroll_y: True
+                StackLayout:
+                    id: path_stack
+                    size_hint: 1, None
+                    padding: ("10dp", "10dp", "10dp", "10dp")
+                    height: self.minimum_height
+                    spacing: "5dp"
+                    width: root.width
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, None
+            height: "90dp"
+            spacing: "75dp"
+            padding: ("70dp", "30dp", "10dp", "10dp")
+            Button:
+                text: "Back"
+                size_hint: None, 1
+                width: "100dp"
+                on_press: root.on_back_pressed()
+            Button:
+                text: "Add new path"
+                size_hint: None, 1
+                width: "130dp"
+                on_press: root.on_add_path_pressed()

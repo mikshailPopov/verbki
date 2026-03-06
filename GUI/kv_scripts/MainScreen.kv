@@ -1,4 +1,5 @@
 <MainScreen>:
+    on_pre_enter: root.load_decks(deck_stack_L)
     BoxLayout:
         orientation: 'vertical'
         Label:
@@ -18,7 +19,7 @@
                 text: "New Deck"
                 size_hint: .27, .12
                 pos_hint: {"center_x": 0.5, "center_y": 0.5}
-                on_press: root.switch_to_new_deck()
+                on_press: root.on_new_deck_pressed()
             BoxLayout:
                 orientation: 'vertical'
                 spacing: '5dp'
@@ -50,8 +51,7 @@
                     do_scroll_x: False
                     do_scroll_y: True
                     StackLayout:
-                        id: dict_stack
-                        on_kv_post: root.load_dict_db(self)
+                        id: deck_stack_L
                         size_hint: 1, None
                         padding: ("10dp", "10dp", "10dp", "10dp")
                         height: self.minimum_height
@@ -75,4 +75,4 @@
             text: "\uF0CC"
             font_name: "fonts/WEBDINGS.ttf"
             pos_hint: {"x": .05, "y": .07}
-            on_release: root.add_existing_deck()
+            on_release: root.on_deck_paths_screen_pressed()

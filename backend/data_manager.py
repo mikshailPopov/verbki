@@ -1,3 +1,4 @@
+import pathlib
 import sqlite3
 import os
 from backend.data_models import Verb
@@ -8,7 +9,9 @@ all_languages = get_all_languages_with_tenses('backend/languages_tenses/tenses.j
 class DatabaseManager:
     def __init__(self):
         self.BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-        self.DB_PATH = os.path.abspath(os.path.join(self.BASE_DIR, "..", "database", "decks"))
+        # self.DB_PATH = os.path.abspath(os.path.join(self.BASE_DIR, "..", "database", "decks"))
+        self.DB_PATH = os.path.abspath("database/decks")
+        print(self.DB_PATH)
         self.other_deck_paths = get_all_deck_paths()
         self.con = None
         self.cur = None
@@ -30,9 +33,11 @@ class DatabaseManager:
 
     def connect_to_db(self, db_name):
         if not os.path.isfile(os.path.join(self.DB_PATH, db_name+".db")):
+            if len(self.other_deck_paths) == 0:
+                self.con = sqlite3.connect(os.path.join(self.DB_PATH, db_name + '.db'))
             for path in self.other_deck_paths:
-                if os.path.isfile(path):
-                    self.con = sqlite3.connect(path)
+                if os.path.isfile(os.path.join(path, db_name+'.db')):
+                    self.con = sqlite3.connect(os.path.join(path, db_name+'.db'))
                     break
         else:
             self.con = sqlite3.connect(os.path.join(self.DB_PATH, db_name+".db"))
@@ -107,7 +112,7 @@ class DatabaseManager:
         tenses = list(verb.tenses.keys())
 
         tense_columns = '", "'.join(tenses)
-        full_input_data = [verb.original, verb.infinitive] + tenses
+        full_input_data = [" ", verb.infinitive] + tenses
         verb_placeholders = ', '.join(['?'] * len(tenses))
 
         self.cur.execute(f'INSERT OR IGNORE INTO verbs (original, infinitive, "{tense_columns}") '
@@ -129,9 +134,15 @@ class DatabaseManager:
         self.current_deck_data['verb_cards'] = self.get_all_verbs()
         print("New Verb has been added")
 
-    def get_all_db_files(self):
-        dict_db_list = os.listdir(os.path.abspath(os.path.join(self.BASE_DIR, "..", "database", "decks")))
-        return dict_db_list
+    def get_db_files_from_all_path(self):
+        db_dir_list = [entry.name for entry in pathlib.Path(self.DB_PATH).iterdir() if entry.is_file() and entry.name.endswith(".db")]
+        other_paths = get_all_deck_paths()
+        for path in other_paths:
+            db_file_list = [entry.name for entry in pathlib.Path(path).iterdir() if
+                         entry.is_file() and entry.name.endswith(".db")]
+            db_dir_list += db_file_list
+        print(db_dir_list)
+        return db_dir_list
 
     def get_db_file(self, filename) -> str:
         for root, dir, files in os.walk(os.path.join(self.BASE_DIR, "..", "database", "decks")):
@@ -221,8 +232,10 @@ class DatabaseManager:
             return []
 
     def update_verb(self, verb_data, new_data):
+        # self.cur.execute(f"UPDATE verbs SET original = ?, infinitive = ? WHERE ID_VERB = ?",
+        #                  (str(new_data["original"]), str(new_data['infinitive']), int(new_data['verb_id'])))
         self.cur.execute(f"UPDATE verbs SET original = ?, infinitive = ? WHERE ID_VERB = ?",
-                         (str(new_data["original"]), str(new_data['infinitive']), int(new_data['verb_id'])))
+                         (str(), str(new_data['infinitive']), int(new_data['verb_id'])))
         
         verb_tenses = dict(list(verb_data['tenses'].items()))
         for tense in verb_tenses:

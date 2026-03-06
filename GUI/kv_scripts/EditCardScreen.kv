@@ -9,16 +9,16 @@
             orientation: "horizontal"
             size_hint: .8, None
             height: "40dp"
-            Label:
-                text: "Native"
-                color: 1,1,1,1
-                font_size: "25dp"
-            TextInput:
-                id: original_input
-                hint_text: "Type here..."
-                write_tab: False
-                multiline: False
-                font_size: "25dp"
+#            Label:
+#                text: "Native"
+#                color: 1,1,1,1
+#                font_size: "25dp"
+#            TextInput:
+#                id: original_input
+#                hint_text: "Type here..."
+#                write_tab: False
+#                multiline: False
+#                font_size: "25dp"
             Label:
                 text: "Infinitive"
                 color: 1,1,1,1
@@ -105,7 +105,7 @@
                 height: "45dp"
                 width: "100dp"
                 pos: "50dp", "45dp"
-                on_press: root.on_exit()
+                on_press: root.on_exit_pressed()
             Button:
                 text: "Save"
                 size_hint: .1, 1

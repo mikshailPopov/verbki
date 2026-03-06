@@ -19,7 +19,7 @@ class EditCardScreen(Screen):
 
     def load_tense_widgets_and_card_data(self):
         self.ids.tense_stack.clear_widgets()
-        self.ids.original_input.text = self.card_data['original']
+        # self.ids.original_input.text = self.card_data['original']
         self.ids.infinitive_input.text = self.card_data['infinitive']
 
         for tense in dict(list(self.card_data['tenses'].items())):
@@ -30,12 +30,12 @@ class EditCardScreen(Screen):
 
     def delete_card(self):
         self.db_manager.delete_verb(self.card_data)
-        self.on_exit()
+        self.on_exit_pressed()
 
     def save_new_data(self):
         new_card_data = dict()
         new_card_data['verb_id'] = self.card_data['verb_id']
-        new_card_data['original'] = self.ids['original_input'].text
+        # new_card_data['original'] = self.ids['original_input'].text
         new_card_data['infinitive'] = self.ids.infinitive_input.text
 
         tenses = dict(list(self.card_data['tenses'].items()))
@@ -45,14 +45,14 @@ class EditCardScreen(Screen):
                 conjugation_dict[conjugation] = self.tense_text_input_widgets[tense][conjugation].text
             new_card_data[tense] = conjugation_dict
         self.db_manager.update_verb(self.card_data, new_card_data)
-        self.on_exit()
+        self.on_exit_pressed()
 
     def on_pre_enter(self, *args):
         print(self.db_manager.current_verb_data)
         self.card_data = self.db_manager.current_verb_data
         self.load_tense_widgets_and_card_data()
 
-    def on_exit(self):
+    def on_exit_pressed(self):
         self.card_data = None
         self.sm.transition = SlideTransition(direction='right')
         self.sm.switch_to(self.sm.screens_dict['deck_screen'])
@@ -68,7 +68,7 @@ class NewCardScreen(Screen):
 
     def load_empty_tense_tables(self):
         self.ids.tense_stack_layout.clear_widgets()
-        self.ids.original_textinput.text = ""
+        # self.ids.original_textinput.text = ""
         self.ids.infinitive_textinput.text = ""
 
         self.db_manager.get_current_db_language()
@@ -86,11 +86,12 @@ class NewCardScreen(Screen):
             for conjugation in self.tables[tense]:
                 conjugation_dict[conjugation] = self.tables[tense][conjugation].text
             tenses_dict[tense] = conjugation_dict
-        new_verb = Verb(self.ids.original_textinput.text, self.ids.infinitive_textinput.text, tenses_dict)
+        # new_verb = Verb(self.ids.original_textinput.text, self.ids.infinitive_textinput.text, tenses_dict)
+        new_verb = Verb(" ", self.ids.infinitive_textinput.text, tenses_dict)
         self.db_manager.insert_verb(new_verb)
-        self.on_exit()
+        self.on_exit_pressed()
 
-    def on_exit(self):
+    def on_exit_pressed(self):
         self.sm.transition = SlideTransition(direction='right')
         self.sm.switch_to(self.sm.screens_dict['deck_screen'])
 

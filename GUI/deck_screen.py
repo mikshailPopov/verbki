@@ -56,7 +56,7 @@ class NewDeckCreatorScreen(Screen):
         self.sm.transition = SlideTransition(direction='right')
         self.sm.switch_to(self.sm.screens_dict['main_screen'])
 
-    def on_exit(self):
+    def on_exit_pressed(self):
         self.sm.transition = SlideTransition(direction='right')
         self.sm.switch_to(self.sm.screens_dict['main_screen'])
 
@@ -79,7 +79,7 @@ class DeckScreen(Screen):
     def load_cards(self):
         verb_list = self.database_manager.get_some_info_from_verbs("infinitive", "original")
         for ind in range(len(verb_list)):
-            new_button = CardButton(text=f"{verb_list[ind][1]}/{verb_list[ind][0]}", verb_arg=verb_list[ind]
+            new_button = CardButton(text=f"{verb_list[ind][0]}", verb_arg=verb_list[ind]
                                     , root=self)
             self.buttons.append(new_button)
             self.ids.verb_list_stack.add_widget(new_button)
@@ -119,7 +119,7 @@ class DeckScreen(Screen):
         self.sm.transition = SlideTransition(direction='left')
         self.sm.switch_to(self.sm.screens_dict['exercise_screen'])
 
-    def on_exit(self):
+    def on_exit_pressed(self):
             self.sm.transition = SlideTransition(direction='right')
             self.sm.switch_to(self.sm.screens_dict['main_screen'])
 
@@ -154,7 +154,7 @@ class EditDeckScreen(Screen):
         self.database_manager.get_current_db_language()
         self.load_deck_data()
 
-    def on_exit(self):
+    def on_exit_pressed(self):
         self.deck_data = None
         self.sm.transition = SlideTransition(direction='up')
         self.sm.switch_to(self.sm.screens_dict['deck_screen'])

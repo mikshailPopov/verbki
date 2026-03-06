@@ -50,7 +50,8 @@ class ExerciseScreen(Screen):
             self.create_popup()
             return
         self.current_verb = random.choice(self.total_verbs)
-        self.ids['verb_title'].text = f"{self.current_verb['original']} | {self.current_verb['infinitive']}"
+        # self.ids['verb_title'].text = f"{self.current_verb['original']} | {self.current_verb['infinitive']}"
+        self.ids['verb_title'].text = f"{self.current_verb['infinitive']}"
         for t in self.tables_input_widgets:
             for i in self.tables_input_widgets[t]:
                 self.tables_input_widgets[t][i].text = ""
@@ -134,12 +135,12 @@ class ExerciseScreen(Screen):
 
         warning_popup = Popup(title='Finish!', content=t_layout, size_hint=(None, None),
                                    size=(dp(400), dp(400)))
-        warning_popup.bind(on_dismiss=self.on_exit)
+        warning_popup.bind(on_dismiss=self.on_exit_pressed)
         warning_popup.open()
 
         p_button.bind(on_press=warning_popup.dismiss)
 
-    def on_exit(self, instance):
+    def on_exit_pressed(self, instance):
         self.sm.transition = SlideTransition(direction='right')
         self.sm.switch_to(self.sm.screens_dict['deck_screen'])
 

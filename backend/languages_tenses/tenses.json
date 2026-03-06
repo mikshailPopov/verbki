@@ -8,8 +8,14 @@
         "Indicativo Preterito Anterior": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
         "Indicativo Futuro Imperfecto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
         "Indicativo Futuro Perfecto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
-        "Indicativo Condicional Simple": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
-        "Indicativo Condicional Compuesto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"]
+        "Subjuntivo Presente": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Subjuntivo Imperfecto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Subjuntivo Perfecto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Subjuntivo Pluscuamperfecto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Condicional Simple": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Condicional Compuesto": ["Yo", "Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ellos(as)"],
+        "Imperativo": ["Tú", "El/Ella/Ud", "Nosotros(as)", "Vosotros(as)", "Ustedes"],
+        "Gerundio": [" "]
     },
     "english": {
         "Present Simple": ["I", "You", "He/she/it", "We", "You(plural)", "They"],

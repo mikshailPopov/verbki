@@ -8,7 +8,7 @@ class Deck:
 class Verb:
     def __init__(self, original_verb, infinitive, tenses : dict):
         self.verb_id : int
-        self.original = original_verb
+        # self.original = original_verb
         self.infinitive = infinitive
         self.tenses = tenses
 
