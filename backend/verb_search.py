@@ -23,5 +23,3 @@ def get_info(verb):
         tense_dict[tense.find('b').text] = conjugation_list
 
     return tense_dict
-
-# download_html("https://conjugator.reverso.net/conjugation-spanish-verb-comer.html", "comer")
