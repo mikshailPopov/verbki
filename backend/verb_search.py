@@ -13,6 +13,8 @@ def get_info(verb):
 
     soup = BeautifulSoup(http_req, 'lxml')
     indicative = soup.find('div', class_='indicative text-center main-mode')
+    subjuntivo = soup.find('div', class_='subjuntivo text-center main-mode')
+    imperativo = soup.find('div', class_='imperativo text-center main-mode')
 
     tense_dict = {}
     
@@ -20,8 +22,22 @@ def get_info(verb):
         conjugation_list = []
         for con in tense.find_all("span"):
             conjugation_list.append(con.find("f").text)
-        tense_dict[tense.find('b').text] = conjugation_list
+        tense_dict[f"Indicativo {tense.find('b').text.strip()}"] = conjugation_list
+
+    for tense in subjuntivo.find_all("span", class_="subjuntivo"):
+        conjugation_list = []
+        for con in tense.find_all("span"):
+            conjugation_list.append(con.find("f").text)
+        tense_dict[f"Subjuntivo {tense.find('b').text.strip()}"] = conjugation_list
+
+    for tense in imperativo.find_all("span", class_="imperativo"):
+        conjugation_list = []
+        for con in tense.find_all("span"):
+            conjugation_list.append(con.find("value").text)
+        tense_dict[f"Imperativo"] = conjugation_list
 
     return tense_dict
 
 # download_html("https://conjugator.reverso.net/conjugation-spanish-verb-comer.html", "comer")
+
+print(get_info("ir"))
