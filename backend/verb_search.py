@@ -37,7 +37,10 @@ def get_info(verb):
         tense_dict[f"Imperativo"] = conjugation_list
 
     return tense_dict
+<<<<<<< HEAD
 
 # download_html("https://conjugator.reverso.net/conjugation-spanish-verb-comer.html", "comer")
 
 print(get_info("ir"))
+=======
+>>>>>>> 20f47271850b8c50efd75b0d884cb2268f406090
